@@ -25,6 +25,8 @@ struct SwiftUIAlertView: View {
     }
 }
 ```
+<img src="Resources/Alert.png" width="400"/>
+
 
 ## ActionSheetState
 ```swift
@@ -52,3 +54,4 @@ struct SwiftUIActionSheetView: View {
     }
 }
 ```
+<img src="Resources/ActionSheet.png" width="400"/>
