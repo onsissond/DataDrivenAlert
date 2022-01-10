@@ -12,13 +12,15 @@ struct SwiftUIActionSheetView: View {
     @State var actionSheetState: ActionSheetState<AlertAction>?
     
     var body: some View {
-        Button("Show alert") {
+        Button("Show action sheet") {
             actionSheetState = .init(
-                title: "Test",
+                title: "Hello world!",
                 message: nil,
                 buttons: [
-                    .cancel("Stop", action: .send(.cancel)),
-                    .default("OK", action: .send(.ok))
+                    .default("OK", action: .send(.ok)),
+                    .default("I am not sure", action: .send(.possible)),
+                    .destructive("No no no", action: .send(.no)),
+                    .cancel("Cancel", action: .send(.cancel))
                 ]
             )
         }

@@ -14,10 +14,10 @@ struct SwiftUIAlertView: View {
     var body: some View {
         Button("Show alert") {
             alertState = .init(
-                title: "Test",
+                title: "Hello world!",
                 message: nil,
                 buttons: [
-                    .cancel("Stop", action: .send(.cancel)),
+                    .cancel("Cancel", action: .send(.cancel)),
                     .default("OK", action: .send(.ok))
                 ]
             )
