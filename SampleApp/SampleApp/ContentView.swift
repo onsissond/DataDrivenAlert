@@ -14,8 +14,18 @@ struct ContentView: View {
                 NavigationLink("SwiftUIAlert") {
                     SwiftUIAlertView()
                 }
+                NavigationLink("SwiftUIActionSheetView") {
+                    SwiftUIActionSheetView()
+                }
                 NavigationLink("ComposableAlert") {
                     ComposableAlertView(store: .init(
+                        initialState: .init(),
+                        reducer: appReducer,
+                        environment: Void()
+                    ))
+                }
+                NavigationLink("ComposableConfirmationDialog") {
+                    ComposableConfirmationDialog(store: .init(
                         initialState: .init(),
                         reducer: appReducer,
                         environment: Void()

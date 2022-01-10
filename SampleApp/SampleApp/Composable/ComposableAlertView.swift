@@ -33,28 +33,3 @@ struct ComposableAlertView_Previews: PreviewProvider {
         ))
     }
 }
-
-enum AppAction: Equatable {
-    case showAlert
-    case alertAction(AlertAction)
-}
-struct AppState: Equatable {
-    var alertState: ComposableArchitecture.AlertState<AppAction>?
-}
-let appReducer = Reducer<AppState, AppAction, Void> { state, action, _ in
-    switch action {
-    case .showAlert:
-        state.alertState = .init(
-            title: TextState("Test"),
-            message: nil,
-            buttons: [
-                .cancel(TextState("Stop"), action: .send(.alertAction(.cancel))),
-                .default(TextState("OK"), action: .send(.alertAction(.ok)))
-            ]
-        )
-        return .none
-    case .alertAction(let action):
-        print(action)
-        return .none
-    }
-}
