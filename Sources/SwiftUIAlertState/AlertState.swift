@@ -245,7 +245,7 @@ private struct NewAlertModifier<Action>: ViewModifier {
     func body(content: Content) -> some View {
         content.alert(
             state.wrappedValue.map { Text($0.title) } ?? Text(""),
-            isPresented: state.isPresent { send(dismiss) },
+            isPresented: state.onChanged { send(dismiss) }.isPresent(),
             presenting: state.wrappedValue,
             actions: { $0.toSwiftUIActions(send: send) },
             message: { $0.message.map { SwiftUI.Text($0) } }
@@ -260,7 +260,7 @@ private struct OldAlertModifier<Action>: ViewModifier {
     let dismiss: Action
     
     func body(content: Content) -> some View {
-        content.alert(item: $state) { state in
+        content.alert(item: $state.onChanged { send(dismiss) }) { state in
             state.toSwiftUIAlert(send: send)
         }
     }
@@ -375,17 +375,13 @@ extension AlertState {
     }
 }
 
-
 extension Binding {
-    func isPresent<Wrapped>(
-        dismiss: @escaping () -> Void
-    ) -> Binding<Bool> where Value == Wrapped? {
+    func onChanged(_ action: @escaping () -> Void) -> Binding<Value> {
         .init(
-            get: { self.wrappedValue != nil },
-            set: { isPresent, transaction in
-                guard !isPresent else { return }
-                self.transaction(transaction).wrappedValue = nil
-                dismiss()
+            get: { wrappedValue },
+            set: { value, transaction in
+                self.transaction(transaction).wrappedValue = value
+                action()
             }
         )
     }

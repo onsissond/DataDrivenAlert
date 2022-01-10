@@ -425,3 +425,9 @@ extension LocalizedStringKey {
     return String(format: format, locale: locale, arguments: arguments)
   }
 }
+
+extension TextState: ExpressibleByStringLiteral {
+    public init(stringLiteral value: StringLiteralType) {
+        self.init(value)
+    }
+}

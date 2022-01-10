@@ -8,18 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		E0D2CB83278C3D55004CDEF9 /* SampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB82278C3D55004CDEF9 /* SampleAppApp.swift */; };
-		E0D2CB85278C3D55004CDEF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB84278C3D55004CDEF9 /* ContentView.swift */; };
+		E0D2CB85278C3D55004CDEF9 /* ComposableAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB84278C3D55004CDEF9 /* ComposableAlertView.swift */; };
 		E0D2CB87278C3D56004CDEF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0D2CB86278C3D56004CDEF9 /* Assets.xcassets */; };
 		E0D2CB8A278C3D56004CDEF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0D2CB89278C3D56004CDEF9 /* Preview Assets.xcassets */; };
 		E0D2CB92278C3D6C004CDEF9 /* SwiftUIAlertState in Frameworks */ = {isa = PBXBuildFile; productRef = E0D2CB91278C3D6C004CDEF9 /* SwiftUIAlertState */; };
+		E0D2CB95278C4629004CDEF9 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E0D2CB94278C4629004CDEF9 /* ComposableArchitecture */; };
+		E0D2CB97278C4B31004CDEF9 /* SwiftUIAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB96278C4B31004CDEF9 /* SwiftUIAlertView.swift */; };
+		E0D2CB99278C4B46004CDEF9 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB98278C4B46004CDEF9 /* AlertAction.swift */; };
+		E0D2CB9B278C4C3A004CDEF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB9A278C4C3A004CDEF9 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E0D2CB7F278C3D55004CDEF9 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D2CB82278C3D55004CDEF9 /* SampleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppApp.swift; sourceTree = "<group>"; };
-		E0D2CB84278C3D55004CDEF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E0D2CB84278C3D55004CDEF9 /* ComposableAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableAlertView.swift; sourceTree = "<group>"; };
 		E0D2CB86278C3D56004CDEF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0D2CB89278C3D56004CDEF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E0D2CB96278C4B31004CDEF9 /* SwiftUIAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAlertView.swift; sourceTree = "<group>"; };
+		E0D2CB98278C4B46004CDEF9 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		E0D2CB9A278C4C3A004CDEF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0D2CB95278C4629004CDEF9 /* ComposableArchitecture in Frameworks */,
 				E0D2CB92278C3D6C004CDEF9 /* SwiftUIAlertState in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,9 +63,12 @@
 			isa = PBXGroup;
 			children = (
 				E0D2CB82278C3D55004CDEF9 /* SampleAppApp.swift */,
-				E0D2CB84278C3D55004CDEF9 /* ContentView.swift */,
+				E0D2CB84278C3D55004CDEF9 /* ComposableAlertView.swift */,
 				E0D2CB86278C3D56004CDEF9 /* Assets.xcassets */,
 				E0D2CB88278C3D56004CDEF9 /* Preview Content */,
+				E0D2CB96278C4B31004CDEF9 /* SwiftUIAlertView.swift */,
+				E0D2CB98278C4B46004CDEF9 /* AlertAction.swift */,
+				E0D2CB9A278C4C3A004CDEF9 /* ContentView.swift */,
 			);
 			path = SampleApp;
 			sourceTree = "<group>";
@@ -95,6 +106,7 @@
 			name = SampleApp;
 			packageProductDependencies = (
 				E0D2CB91278C3D6C004CDEF9 /* SwiftUIAlertState */,
+				E0D2CB94278C4629004CDEF9 /* ComposableArchitecture */,
 			);
 			productName = SampleApp;
 			productReference = E0D2CB7F278C3D55004CDEF9 /* SampleApp.app */;
@@ -124,6 +136,9 @@
 				Base,
 			);
 			mainGroup = E0D2CB76278C3D55004CDEF9;
+			packageReferences = (
+				E0D2CB93278C4629004CDEF9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = E0D2CB80278C3D55004CDEF9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,8 +165,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0D2CB85278C3D55004CDEF9 /* ContentView.swift in Sources */,
+				E0D2CB85278C3D55004CDEF9 /* ComposableAlertView.swift in Sources */,
+				E0D2CB9B278C4C3A004CDEF9 /* ContentView.swift in Sources */,
+				E0D2CB99278C4B46004CDEF9 /* AlertAction.swift in Sources */,
 				E0D2CB83278C3D55004CDEF9 /* SampleAppApp.swift in Sources */,
+				E0D2CB97278C4B31004CDEF9 /* SwiftUIAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,10 +373,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		E0D2CB93278C4629004CDEF9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		E0D2CB91278C3D6C004CDEF9 /* SwiftUIAlertState */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftUIAlertState;
+		};
+		E0D2CB94278C4629004CDEF9 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E0D2CB93278C4629004CDEF9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

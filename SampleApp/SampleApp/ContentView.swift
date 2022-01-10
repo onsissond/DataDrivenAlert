@@ -6,40 +6,29 @@
 //
 
 import SwiftUI
-import SwiftUIAlertState
-
-enum AlertAction {
-    case ok
-    case cancel
-    case dismiss
-}
 
 struct ContentView: View {
-    @State var alertState: AlertState<AlertAction>?
-    
     var body: some View {
-        Group {
-            Button("Show alert") {
-                alertState = .init(
-                    title: TextState("Test"),
-                    message: nil,
-                    buttons: [
-                        .destructive(TextState("Stop"), action: .send(.cancel)),
-                        .default(TextState("OK"), action: .send(.ok))
-                    ]
-                )
+        NavigationView {
+            List {
+                NavigationLink("SwiftUIAlert") {
+                    SwiftUIAlertView()
+                }
+                NavigationLink("ComposableAlert") {
+                    ComposableAlertView(store: .init(
+                        initialState: .init(),
+                        reducer: appReducer,
+                        environment: Void()
+                    ))
+                }
             }
         }
-        .alert(
-            $alertState,
-            send: { action in print(action) },
-            dismiss: .dismiss
-        )
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ContentView_Preview: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
