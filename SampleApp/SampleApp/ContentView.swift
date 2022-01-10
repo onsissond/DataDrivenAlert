@@ -11,21 +11,21 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink("SwiftUIAlert") {
-                    SwiftUIAlertView()
+                NavigationLink("AlertHostView") {
+                    AlertHostView()
                 }
-                NavigationLink("SwiftUIActionSheetView") {
-                    SwiftUIActionSheetView()
+                NavigationLink("ConfirmationDialogHostView") {
+                    ConfirmationDialogHostView()
                 }
-                NavigationLink("ComposableAlert") {
-                    ComposableAlertView(store: .init(
+                NavigationLink("ComposableAlertHostView") {
+                    ComposableAlertHostView(store: .init(
                         initialState: .init(),
                         reducer: appReducer,
                         environment: Void()
                     ))
                 }
-                NavigationLink("ComposableConfirmationDialog") {
-                    ComposableConfirmationDialog(store: .init(
+                NavigationLink("ComposableConfirmationDialogHostView") {
+                    ComposableConfirmationDialogHostView(store: .init(
                         initialState: .init(),
                         reducer: appReducer,
                         environment: Void()

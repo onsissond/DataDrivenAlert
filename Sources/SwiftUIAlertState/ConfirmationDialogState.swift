@@ -4,7 +4,7 @@ import SwiftUI
 @available(macOS 12, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
-public struct ActionSheetState<Action> {
+public struct ConfirmationDialogState<Action> {
     public let id = UUID()
     public var buttons: [Button]
     public var message: TextState?
@@ -65,7 +65,7 @@ public struct ActionSheetState<Action> {
 @available(macOS 12, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
-extension ActionSheetState: Equatable where Action: Equatable {
+extension ConfirmationDialogState: Equatable where Action: Equatable {
     public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.title == rhs.title
         && lhs.message == rhs.message
@@ -77,7 +77,7 @@ extension ActionSheetState: Equatable where Action: Equatable {
 @available(macOS 12, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
-extension ActionSheetState: Hashable where Action: Hashable {
+extension ConfirmationDialogState: Hashable where Action: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.title)
         hasher.combine(self.message)
@@ -89,7 +89,7 @@ extension ActionSheetState: Hashable where Action: Hashable {
 @available(macOS 12, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
-extension ActionSheetState: Identifiable {}
+extension ConfirmationDialogState: Identifiable {}
 
 extension View {
     /// Displays a dialog when the store's state becomes non-`nil`, and dismisses it when it becomes
@@ -104,8 +104,8 @@ extension View {
     @available(macOS 12, *)
     @available(tvOS 13, *)
     @available(watchOS 6, *)
-    @ViewBuilder public func actionSheet<Action>(
-        _ state: Binding<ActionSheetState<Action>?>,
+    @ViewBuilder public func confirmationDialog<Action>(
+        _ state: Binding<ConfirmationDialogState<Action>?>,
         send: @escaping (Action) -> Void,
         dismiss: Action
     ) -> some View {
@@ -133,7 +133,7 @@ extension View {
 // NB: Workaround for iOS 14 runtime crashes during iOS 15 availability checks.
 @available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
 private struct NewConfirmationDialogModifier<Action>: ViewModifier {
-    var state: Binding<ActionSheetState<Action>?>
+    var state: Binding<ConfirmationDialogState<Action>?>
     let send: (Action) -> Void
     let dismiss: Action
     
@@ -155,7 +155,7 @@ private struct NewConfirmationDialogModifier<Action>: ViewModifier {
 @available(tvOS 13, *)
 @available(watchOS 6, *)
 private struct OldConfirmationDialogModifier<Action>: ViewModifier {
-    @Binding var state: ActionSheetState<Action>?
+    @Binding var state: ConfirmationDialogState<Action>?
     let send: (Action) -> Void
     let dismiss: Action
     
@@ -170,7 +170,7 @@ private struct OldConfirmationDialogModifier<Action>: ViewModifier {
 @available(macOS 12, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
-extension ActionSheetState {
+extension ConfirmationDialogState {
 #if compiler(>=5.5)
     @available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
     @ViewBuilder

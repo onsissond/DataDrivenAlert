@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AlertHostView.swift
 //  SampleApp
 //
 //  Created by Sukhanov Evgeny on 10.01.2022.
@@ -8,17 +8,17 @@
 import SwiftUI
 import SwiftUIAlertState
 
-struct SwiftUIAlertView: View {
+struct AlertHostView: View {
     @State var alertState: AlertState<AlertAction>?
     
     var body: some View {
         Button("Show alert") {
             alertState = .init(
-                title: "Hello world!",
-                message: nil,
+                title: "Do you want to delete this account?",
+                message: "You cannot undo this action",
                 buttons: [
                     .cancel("Cancel", action: .send(.cancel)),
-                    .default("OK", action: .send(.ok))
+                    .destructive("Delete", action: .send(.delete))
                 ]
             )
         }
@@ -32,6 +32,6 @@ struct SwiftUIAlertView: View {
 
 struct SwiftUIAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIAlertView()
+        AlertHostView()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ComposableConfirmationDialog.swift
+//  ComposableAlertHostView.swift
 //  SampleApp
 //
 //  Created by Sukhanov Evgeny on 10.01.2022.
@@ -8,25 +8,25 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct ComposableConfirmationDialog: View {
+struct ComposableAlertHostView: View {
     @State var store: Store<AppState, AppAction>
     
     var body: some View {
         WithViewStore(store) { viewStore in
             Button("Show alert") {
-                viewStore.send(.showConfirmationDialog)
+                viewStore.send(.showAlert)
             }
-            .confirmationDialog(
-                store.scope(state: \.confirmationDialog),
+            .alert(
+                store.scope(state: \.alertState),
                 dismiss: .alertAction(.dismiss)
             )
         }
     }
 }
 
-struct ComposableConfirmationDialog_Previews: PreviewProvider {
+struct ComposableAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        ComposableAlertView(store: .init(
+        ComposableAlertHostView(store: .init(
             initialState: .init(),
             reducer: .empty,
             environment: Void()

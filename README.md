@@ -1,19 +1,19 @@
-# Data driven alert and action sheet
+# Data driven alert and confirmation dialog
 Based on [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture)
 
 ## AlertState
 ```swift
-struct SwiftUIAlertView: View {
+struct AlertHostView: View {
     @State var alertState: AlertState<AlertAction>?
     
     var body: some View {
         Button("Show alert") {
             alertState = .init(
-                title: "Hello world!",
-                message: nil,
+                title: "Do you want to delete this account?",
+                message: "You cannot undo this action",
                 buttons: [
                     .cancel("Cancel", action: .send(.cancel)),
-                    .default("OK", action: .send(.ok))
+                    .destructive("Delete", action: .send(.delete))
                 ]
             )
         }
@@ -28,30 +28,30 @@ struct SwiftUIAlertView: View {
 <img src="Resources/Alert.png" width="400"/>
 
 
-## ActionSheetState
+## ConfirmationDialogState
 ```swift
-struct SwiftUIActionSheetView: View {
-    @State var actionSheetState: ActionSheetState<AlertAction>?
+struct ConfirmationDialogHostView: View {
+    @State var confirmationDialogState: ConfirmationDialogState<AlertAction>?
     
     var body: some View {
-        Button("Show action sheet") {
-            actionSheetState = .init(
-                title: "Hello world!",
-                message: nil,
+        Button("Show confirmation dialog") {
+            confirmationDialogState = .init(
+                title: "Like out app?",
+                titleVisibility: .visible,
+                message: "Would you like to rate our app?\nThanks for using our app.",
                 buttons: [
-                    .default("OK", action: .send(.ok)),
-                    .default("I am not sure", action: .send(.possible)),
-                    .destructive("No no no", action: .send(.no)),
+                    .destructive("Like", action: .send(.like)),
+                    .default("Not now", action: .send(.notNow)),
                     .cancel("Cancel", action: .send(.cancel))
                 ]
             )
         }
-        .actionSheet(
-            $actionSheetState,
+        .confirmationDialog(
+            $confirmationDialogState,
             send: { action in print(action) },
             dismiss: .dismiss
         )
     }
 }
 ```
-<img src="Resources/ActionSheet.png" width="400"/>
+<img src="Resources/ConfirmationDialog.png" width="400"/>
