@@ -1,4 +1,5 @@
-# Data driven alret and action sheet
+# Data driven alert and action sheet
+Based on [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture)
 
 ## AlertState
 ```swift
