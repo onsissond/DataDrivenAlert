@@ -78,3 +78,5 @@ failed_snapshots
 temp_snapshot_recording
 
 TravellersFramework/TravellersFramework.xcodeproj/
+
+.swiftpm/
