@@ -1,5 +1,4 @@
-# SwiftUIAlertState
-Extension for SwiftUI.Alert for data driven configuration 
+# Data driven alret and action sheet
 
 ## AlertState
 ```swift
