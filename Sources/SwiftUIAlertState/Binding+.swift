@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Sukhanov Evgeny on 10.01.2022.
-//
-
 import SwiftUI
 
 extension Binding {
