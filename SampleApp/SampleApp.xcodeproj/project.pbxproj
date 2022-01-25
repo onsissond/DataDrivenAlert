@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9929FD27A0213E00472729 /* SwiftUIAlertState in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9929FC27A0213E00472729 /* SwiftUIAlertState */; };
 		E0D2CB83278C3D55004CDEF9 /* SampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB82278C3D55004CDEF9 /* SampleAppApp.swift */; };
 		E0D2CB85278C3D55004CDEF9 /* ComposableAlertHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB84278C3D55004CDEF9 /* ComposableAlertHostView.swift */; };
 		E0D2CB87278C3D56004CDEF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0D2CB86278C3D56004CDEF9 /* Assets.xcassets */; };
 		E0D2CB8A278C3D56004CDEF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0D2CB89278C3D56004CDEF9 /* Preview Assets.xcassets */; };
-		E0D2CB92278C3D6C004CDEF9 /* SwiftUIAlertState in Frameworks */ = {isa = PBXBuildFile; productRef = E0D2CB91278C3D6C004CDEF9 /* SwiftUIAlertState */; };
 		E0D2CB95278C4629004CDEF9 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E0D2CB94278C4629004CDEF9 /* ComposableArchitecture */; };
 		E0D2CB99278C4B46004CDEF9 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB98278C4B46004CDEF9 /* AlertAction.swift */; };
 		E0D2CB9B278C4C3A004CDEF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2CB9A278C4C3A004CDEF9 /* ContentView.swift */; };
@@ -41,7 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0D2CB95278C4629004CDEF9 /* ComposableArchitecture in Frameworks */,
-				E0D2CB92278C3D6C004CDEF9 /* SwiftUIAlertState in Frameworks */,
+				0A9929FD27A0213E00472729 /* SwiftUIAlertState in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,8 +130,8 @@
 			);
 			name = SampleApp;
 			packageProductDependencies = (
-				E0D2CB91278C3D6C004CDEF9 /* SwiftUIAlertState */,
 				E0D2CB94278C4629004CDEF9 /* ComposableArchitecture */,
+				0A9929FC27A0213E00472729 /* SwiftUIAlertState */,
 			);
 			productName = SampleApp;
 			productReference = E0D2CB7F278C3D55004CDEF9 /* SampleApp.app */;
@@ -413,7 +413,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E0D2CB91278C3D6C004CDEF9 /* SwiftUIAlertState */ = {
+		0A9929FC27A0213E00472729 /* SwiftUIAlertState */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftUIAlertState;
 		};
