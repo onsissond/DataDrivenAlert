@@ -13,14 +13,23 @@ struct AlertHostView: View {
     
     var body: some View {
         Button("Show alert") {
-            alertState = .init(
-                title: "Do you want to delete this account?",
-                message: "You cannot undo this action",
-                buttons: [
-                    .cancel("Cancel", action: .send(.cancel)),
-                    .destructive("Delete", action: .send(.delete))
-                ]
-            )
+            if #available(iOS 15, *) {
+                alertState = .init(
+                    title: "Do you want to delete this account?",
+                    message: "You cannot undo this action",
+                    buttons: [
+                        .cancel("Cancel", action: .send(.cancel)),
+                        .destructive("Delete", action: .send(.delete))
+                    ]
+                )
+            } else {
+                alertState = .init(
+                    title: "Do you want to delete this account?",
+                    message: "You cannot undo this action",
+                    primaryButton: .cancel("Cancel", action: .send(.cancel)),
+                    secondaryButton: .destructive("Delete", action: .send(.delete))
+                )
+            }
         }
         .alert(
             $alertState,

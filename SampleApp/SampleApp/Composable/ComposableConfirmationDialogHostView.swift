@@ -13,7 +13,7 @@ struct ComposableConfirmationDialogHostView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Button("Show alert") {
+            Button("Show confirmation dialog") {
                 viewStore.send(.showConfirmationDialog)
             }
             .confirmationDialog(

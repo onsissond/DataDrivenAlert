@@ -13,16 +13,28 @@ struct ConfirmationDialogHostView: View {
     
     var body: some View {
         Button("Show confirmation dialog") {
-            confirmationDialogState = .init(
-                title: "Like out app?",
-                titleVisibility: .visible,
-                message: "Would you like to rate our app?\nThanks for using our app.",
-                buttons: [
-                    .destructive("Like", action: .send(.like)),
-                    .default("Not now", action: .send(.notNow)),
-                    .cancel("Cancel", action: .send(.cancel))
-                ]
-            )
+            if #available(iOS 15, *) {
+                confirmationDialogState = .init(
+                    title: "Like out app?",
+                    titleVisibility: .visible,
+                    message: "Would you like to rate our app?\nThanks for using our app.",
+                    buttons: [
+                        .destructive("Like", action: .send(.like)),
+                        .default("Not now", action: .send(.notNow)),
+                        .cancel("Cancel", action: .send(.cancel))
+                    ]
+                )
+            } else {
+                confirmationDialogState = .init(
+                    title: TextState("Like out app?"),
+                    message: "Would you like to rate our app?\nThanks for using our app.",
+                    buttons: [
+                        .destructive("Like", action: .send(.like)),
+                        .default("Not now", action: .send(.notNow)),
+                        .cancel("Cancel", action: .send(.cancel))
+                    ]
+                )
+            }
         }
         .confirmationDialog(
             $confirmationDialogState,

@@ -21,26 +21,39 @@ enum AppAction: Equatable {
 let appReducer = Reducer<AppState, AppAction, Void> { state, action, _ in
     switch action {
     case .showAlert:
-        state.alertState = .init(
-            title: TextState("Test"),
-            message: nil,
-            buttons: [
-                .cancel(TextState("Stop"), action: .send(.alertAction(.cancel))),
-                .default(TextState("OK"), action: .send(.alertAction(.ok)))
-            ]
-        )
+        if #available(iOS 15, *) {
+            state.alertState = .init(
+                title: TextState("Test"),
+                message: nil,
+                buttons: [
+                    .cancel(TextState("Stop"), action: .send(.alertAction(.cancel))),
+                    .default(TextState("OK"), action: .send(.alertAction(.ok)))
+                ]
+            )
+        } else {
+            state.alertState = .init(
+                title: TextState("Test"),
+                message: nil,
+                primaryButton:
+                    .cancel(TextState("Stop"), action: .send(.alertAction(.cancel))),
+                secondaryButton: .default(TextState("OK"), action: .send(.alertAction(.ok)))
+            )
+        }
         return .none
     case .showConfirmationDialog:
         state.confirmationDialog = .init(
-            title: TextState("Test"),
-            message: nil,
+            title: TextState("Like out app?"),
+            message: TextState("Would you like to rate our app?\nThanks for using our app."),
             buttons: [
-                .cancel(TextState("Stop"), action: .send(.alertAction(.cancel))),
-                .default(TextState("OK"), action: .send(.alertAction(.ok)))
+                .destructive(TextState("Like"), action: .send(.alertAction(.like))),
+                .default(TextState("Not now"), action: .send(.alertAction(.notNow))),
+                .cancel(TextState("Cancel"), action: .send(.alertAction(.cancel)))
             ]
         )
         return .none
     case .alertAction(let action):
+        state.alertState = nil
+        state.confirmationDialog = nil
         print(action)
         return .none
     }
